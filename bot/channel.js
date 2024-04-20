@@ -1,10 +1,10 @@
 const TelegramBot = require("node-telegram-bot-api");
 const { updateUser } = require("../modules/user.service");
 
-const token = process.env.TOKEN_BOT_CHANNEL;
+// const token = process.env.TOKEN_BOT_DROP;
 
 // Create a bot instance
-const bot = new TelegramBot(token, { polling: true });
+// const bot = new TelegramBot(token, { polling: true });
 
 bot.on("chat_member", async (message) => {
   switch (message.new_chat_member.status) {

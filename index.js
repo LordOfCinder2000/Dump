@@ -1,5 +1,4 @@
 require("dotenv").config();
-require("./bot/channel");
 const TelegramBot = require("node-telegram-bot-api");
 const { insertUser, getUser, updateUser } = require("./modules/user.service");
 const {
@@ -44,6 +43,7 @@ async function main() {
         state: null,
       });
     }
+    console.log(user)
     switch (user.state) {
       case "retweet_confirm": {
         if (

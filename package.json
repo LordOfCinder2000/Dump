@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start:m": "node index.js",
+    "start:c": "node ./bot/channel.js"
   },
   "keywords": [],
   "author": "",

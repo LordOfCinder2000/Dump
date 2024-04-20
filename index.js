@@ -97,10 +97,13 @@ async function main() {
             const refId = matched[1].replace("r", "");
             const refUser = await getUser(Number(refId));
             if (refUser !== null) {
-              await updateUser(refUser.id, {
-                balance: refUser.balance + 50,
-                referral: refUser.referral + 1,
-              });
+              const account = await getUser(msg.chat.id)
+              if (account == null) {
+                await updateUser(refUser.id, {
+                  balance: refUser.balance + 50,
+                  referral: refUser.referral + 1,
+                });
+              }
             }
           }
           bot.sendPhoto(

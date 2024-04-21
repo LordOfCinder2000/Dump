@@ -59,7 +59,7 @@ Your referrals: ${user.referral}`,
           [
             {
               text: "👤 Invited friends",
-              url: "https://t.me/share/url?url=https://t.me/tstetsds_bot?start=r1234567&text=Do%20you%20want%2050%20%24TIGER%3F%20%F0%9F%90%AF",
+              url: `https://t.me/share/url?url=https://t.me/tstetsds_bot?start=r${user.id}&text=Do%20you%20want%2050%20%24TIGER%3F%20%F0%9F%90%AF`,
             },
           ],
           [

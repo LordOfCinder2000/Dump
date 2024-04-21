@@ -40,6 +40,11 @@ const userSchema = new mongoose.Schema({
   state: {
     type: String,
   },
+  refUser: {
+    type: [Number],
+    required: true,
+    default: [],
+  },
 });
 
 // Create the user model

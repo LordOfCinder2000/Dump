@@ -30,6 +30,7 @@ const bot = new TelegramBot(token, {
 
 async function main() {
   bot.on("message", async (msg) => {
+    console.log(msg);
     let user = await getUser(msg.from.id);
     if (user === null) {
       user = await insertUser({
@@ -41,6 +42,7 @@ async function main() {
         lang: "en",
         status: "inactive",
         state: null,
+        refUser: [],
       });
     }
     console.log(user);
@@ -96,14 +98,12 @@ async function main() {
           if (matched.length == 2) {
             const refId = matched[1].replace("r", "");
             const refUser = await getUser(Number(refId));
-            if (refUser !== null) {
-              const account = await getUser(msg.chat.id);
-              if (account == null) {
-                await updateUser(refUser.id, {
-                  balance: refUser.balance + 50,
-                  referral: refUser.referral + 1,
-                });
-              }
+            if (refUser !== null && !refUser.refUser.includes(msg.chat.id)) {
+              await updateUser(refUser.id, {
+                balance: refUser.balance + 50,
+                referral: refUser.referral + 1,
+                refUser: [...refUser.refUser, msg.chat.id],
+              });
             }
           }
           bot.sendPhoto(

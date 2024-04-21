@@ -1,7 +1,9 @@
 const startMsg = (msg) => {
   return {
     en: {
-      caption: `Welcome, ${msg.chat.first_name} ${msg.chat.last_name}! 🐯 Subscribe to our channels to get 50 $TIGER.`,
+      caption: `Welcome, ${msg.chat.first_name} ${
+        msg.chat.last_name ? msg.chat.last_name : ""
+      }! 🐯 Subscribe to our channels to get 50 $TIGER.`,
       reply_markup: {
         inline_keyboard: [
           [

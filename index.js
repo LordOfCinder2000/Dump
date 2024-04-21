@@ -35,7 +35,7 @@ async function main() {
       user = await insertUser({
         id: msg.from.id,
         firstName: msg.from.first_name,
-        lastName: msg.from.last_name,
+        lastName: msg.from?.last_name,
         balance: 0,
         referral: 0,
         lang: "en",
@@ -43,7 +43,7 @@ async function main() {
         state: null,
       });
     }
-    console.log(user)
+    console.log(user);
     switch (user.state) {
       case "retweet_confirm": {
         if (
@@ -97,7 +97,7 @@ async function main() {
             const refId = matched[1].replace("r", "");
             const refUser = await getUser(Number(refId));
             if (refUser !== null) {
-              const account = await getUser(msg.chat.id)
+              const account = await getUser(msg.chat.id);
               if (account == null) {
                 await updateUser(refUser.id, {
                   balance: refUser.balance + 50,
